@@ -195,9 +195,9 @@ let WW=2200,WH=1500,W=800,H=500;const FONT='"Ubuntu","PingFang SC","Microsoft Ya
 const dpr=Math.min(2,devicePixelRatio||1);
 const TF='"STIX Two Text","Latin Modern Roman","CMU Serif","Times New Roman",serif';
 try{document.fonts.load('italic 30px "STIX Two Text"');document.fonts.load('30px "STIX Two Text"')}catch(e){}
-if(!ctx.roundRect)CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){r=Math.min(r,w/2,h/2);this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath()};let zm=1;function rs(){zm=Math.max(.75,Math.min(innerWidth/900,innerHeight/560,1.3));W=innerWidth/zm;H=innerHeight/zm;cv.width=Math.round(innerWidth*dpr);cv.height=Math.round(innerHeight*dpr);ctx.setTransform(dpr*zm,0,0,dpr*zm,0,0)}rs();addEventListener('resize',rs);
+if(!ctx.roundRect)CanvasRenderingContext2D.prototype.roundRect=function(x,y,w,h,r){r=Math.min(r,w/2,h/2);this.moveTo(x+r,y);this.arcTo(x+w,y,x+w,y+h,r);this.arcTo(x+w,y+h,x,y+h,r);this.arcTo(x,y+h,x,y,r);this.arcTo(x,y,x+w,y,r);this.closePath()};let zm=1;function rs(){zm=Math.max(.5,Math.min(innerWidth/1350,innerHeight/840,1));W=innerWidth/zm;H=innerHeight/zm;cv.width=Math.round(innerWidth*dpr);cv.height=Math.round(innerHeight*dpr);ctx.setTransform(dpr*zm,0,0,dpr*zm,0,0)}rs();addEventListener('resize',rs);
 const RN=['普通','罕见','稀有','史诗','传说','神话','超级','究极','永恒','唯一'],RC=['#7eef6d','#ffe65d','#4d52e3','#861fde','#de1f1f','#1fdbde','#2affa9','#ff2b75','#ff9a1f','#2b2b2b'],CH=[.64,.32,.16,.08,.04,.02,.012,.007,.004];
-const rm=r=>Math.pow(1.5,r),CR=r=>Math.min(r,22);
+const rm=r=>Math.pow(1.5,r),CR=r=>Math.min(r,18);
 const PT={'+':{d:2,kb:1,n:'加'},'−':{d:1.2,kb:0,slow:1,n:'减'},'×':{d:3.2,kb:1,n:'乘'},'÷':{d:1.6,kb:4,n:'除'},'=':{d:1.4,kb:0,heal:.05,n:'等于'},'%':{d:1.8,kb:0,pct:.05,n:'百分'},'∫':{d:1.2,kb:0,ramp:1,n:'积分'},'Δ':{d:1,kb:0,n:'增量'},'≠':{d:1.2,kb:0,stun:.8,n:'不等于'},'∂':{d:1.6,kb:0,splash:.6,n:'偏导'},'≥':{d:1.8,kb:0,crit:.18,n:'大于等于'},'∪':{d:1,kb:0,n:'并集'},'∠':{d:1,kb:0,n:'角'},'θ':{d:1.3,kb:0,n:'西塔'},'∇':{d:1.6,kb:-2.2,n:'梯度'},'→':{d:1.4,kb:0,exe:1,n:'趋向'},'′':{d:1.4,kb:0,rate:1,n:'导数'},'⊥':{d:1.4,kb:0,perp:1,n:'垂直'},'P':{d:1.8,kb:0,rnd:1,n:'概率'},'σ':{d:1,kb:0,n:'标准差'},'ℝ':{d:2.8,kb:1,n:'实数集'},'ℕ':{d:1.5,kb:0,nat:1,n:'自然数集'},'𝟘':{d:1.2,kb:0,frz:1.3,n:'零'},'∝':{d:1,kb:0,pois:1,n:'正比'},'⊕':{d:1,kb:0,heal2:2.5,n:'直和'},'⊖':{d:1.4,kb:0,steal:.4,n:'对称差'},'∿':{d:1.3,kb:0,chain:2,n:'正弦'},'∀':{d:1.2,kb:0,aoe:95,n:'任意'},'∩':{d:1,kb:0,n:'交集'},'∥':{d:1,kb:0,n:'平行'},'∅':{d:1,kb:0,n:'空集'},'∃':{d:1,kb:0,n:'存在'},'ℵ':{d:1,kb:0,n:'阿列夫'},'∮':{d:1,kb:0,n:'环积分'},'∛':{d:1,kb:0,n:'立方根'},'⌊':{d:1.3,kb:0,floor:1,n:'向下取整'},'⌈':{d:1,kb:0,ceil:1,n:'向上取整'},'‖':{d:1.5,kb:0,berserk:1,n:'范数'},'∴':{d:1.5,kb:0,nth:5,n:'所以'},'∵':{d:1,kb:0,n:'因为'},'π':{d:1.8,kb:0,aoe:70,n:'圆周率'},'√':{d:1.6,kb:0,pct:.04,n:'平方根'},'∞':{d:1.2,kb:0,chain:3,n:'无穷'},'∑':{d:1.3,kb:0,nat:1,n:'求和'},'i':{d:1.4,kb:0,perp:1,n:'虚数单位'},'!':{d:1.2,kb:0,nth:3,n:'阶乘'},'φ':{d:1.6,kb:0,crit:.16,n:'黄金比例'},'Ω':{d:2.6,kb:0,berserk:1,n:'欧米伽'},'e':{d:1.2,kb:0,ramp:1,n:'自然常数'},'ε':{d:.9,kb:0,exe:1,n:'无穷小'},'ζ':{d:1.3,kb:0,pois:1,n:'黎曼ζ'},'∏':{d:1.2,kb:0,crit:.22,n:'连乘'},'Ψ':{d:1.1,kb:0,chain:4,n:'波函数'},'lim':{d:1.5,kb:-1.5,n:'极限'},'f′':{d:1.4,kb:0,rate:1,n:'导函数'},'[ ]':{d:1.3,kb:0,splash:.6,n:'矩阵'},'v⃗':{d:1.3,kb:3,n:'向量'},'μ':{d:1.3,kb:0,heal:.05,n:'均值'},'ℂ':{d:1.5,kb:0,steal:.3,n:'复数集'},'δ':{d:1,kb:0,stun:.6,n:'德尔塔'},'ln':{d:1.2,kb:0,slow:1,n:'自然对数'},'Λ':{d:1.5,kb:0,aoe:60,n:'逻辑与'}},PK=Object.keys(PT),N0=40,OPK=PK.slice(0,N0);
 const DP={'π':['π'],'√':['√'],'∞':['∞'],'∑':['∑'],'i':['i'],'!':['!'],'φ':['φ'],'Ω':['Ω'],'e':['e'],'ε':['ε'],'ζ':['ζ'],'∏':['∏'],'Ψ':['Ψ'],'∇':['∇'],'lim':['lim'],'f′':['f′'],'[ ]':['[ ]'],'v⃗':['v⃗'],'P(A)':['P'],'σ':['σ'],'μ':['μ'],'ℝ':['ℝ'],'ℕ':['ℕ'],'ℂ':['ℂ'],'δ':['δ'],'ln':['ln'],'Λ':['Λ'],'Ø':['∅']};
 function dropSym(m){const l=DP[m.s];if(l&&(m.boss||Math.random()<.88))return l[0];return OPK[Math.random()<.4?ri(0,3):ri(0,OPK.length-1)]}
@@ -316,7 +316,7 @@ function gen(i){
   if(!m.maze){
     const wall=(px,py,rad)=>{const cx=px/C,cy=py/C;for(let y=Math.max(1,Math.floor(cy-rad-1));y<Math.min(r-1,cy+rad+2);y++)for(let x=Math.max(1,Math.floor(cx-rad-1));x<Math.min(c-1,cx+rad+2);x++)if(Math.hypot(x+.5-cx,y+.5-cy)<rad)g[y][x]=1};
     const rp=()=>[C*(4+rnd()*(c-8)),C*(4+rnd()*(r-8))];
-    const sty=m.sty||0,area=c*r,gs=[13,11,12,10][sty],th=[2.2,2.5,2.4,2.6][sty],op2=[.1,.08,.1,.05][sty];
+    const sty=m.sty||0,area=c*r,gs=[18,16,17,15][sty],th=[4.2,4.6,4.4,4.8][sty],op2=[.4,.35,.4,.3][sty];
     // 薄石壁把地图分成许多弯曲的洞室，用门和通道相连（沃罗诺伊分隔 + 扭曲）
     const gx=Math.ceil(c/gs)+3,gy=Math.ceil(r/gs)+3,sd=[];
     for(let j=0;j<gy;j++)for(let i=0;i<gx;i++)sd.push([(i-1.5+(rnd()-.5)*.95)*gs,(j-1.5+(rnd()-.5)*.95)*gs]);
@@ -334,7 +334,7 @@ function gen(i){
       const ed=[...pairs.values()].filter(e=>ins[e.a]&&ins[e.b]);
       for(let i=ed.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1)),t=ed[i];ed[i]=ed[j];ed[j]=t}
       for(const e of ed){const ra=fd(e.a),rb=fd(e.b);let hw=0;
-        if(ra!==rb){par[ra]=rb;e.open=2;hw=2.2}else if(rnd()<.03){e.open=3}else if(rnd()<op2){e.open=1;hw=1.9}
+        if(ra!==rb){par[ra]=rb;e.open=2;hw=3.2}else if(rnd()<.04){e.open=3}else if(rnd()<op2){e.open=1;hw=2.9}
         if(e.open===1||e.open===2){e.hw=hw;const sp=e.mx-e.mn;e.t0=sp<=2*hw?(e.mn+e.mx)/2:e.mn+hw+rnd()*(sp-2*hw)}}}
     for(let y=0;y<r;y++)for(let x=0;x<c;x++){
       let w=0;
@@ -344,7 +344,7 @@ function gen(i){
     for(const e of pairs.values()){if(e.open!==1&&e.open!==2)continue;
       const s1=sd[e.a],s2=sd[e.b],L=Math.hypot(s2[0]-s1[0],s2[1]-s1[1])||1,Px=(s1[0]+s2[0])/2-(s2[1]-s1[1])/L*e.t0,Py=(s1[1]+s2[1])/2+(s2[0]-s1[0])/L*e.t0;
       const wxp=Math.sin(Py*.31+ph1)*1.1+Math.sin(Py*.12+Px*.09+ph3)*1.0,wyp=Math.cos(Px*.29+ph2)*1.1+Math.cos(Px*.1-Py*.08+ph3)*1.0;
-      carve((Px-wxp)*C,(Py-wyp)*C,e.open===2?2.1:1.8)}
+      carve((Px-wxp)*C,(Py-wyp)*C,e.open===2?3.4:3.0)}
     // 洞室里零散的小石柱和断墙
     for(let k=0;k<area/900;k++){const q=rp();wall(q[0],q[1],.6+rnd()*1.0)}
     for(let k=0;k<area/1500;k++){let q=rp(),x=q[0],y=q[1],an=rnd()*6.28;const n=5+Math.floor(rnd()*8);for(let j=0;j<n;j++){wall(x,y,.55);x+=Math.cos(an)*C*.7;y+=Math.sin(an)*C*.7;an+=(rnd()-.5)*.8}}
@@ -368,7 +368,7 @@ function gen(i){
       for(let h=0;h<q.length;h++){const u=q[h];if(lab[u]>=0&&lab[u]!==main){best=u;break}
         const ux=u%c,uy=(u/c)|0;for(const[a,b]of D4){const X=ux+a,Y=uy+b;if(X<1||Y<1||X>=c-1||Y>=r-1)continue;const v=Y*c+X;if(dist[v]<0){dist[v]=dist[u]+1;par[v]=u;q.push(v)}}}
       if(best<0)break;
-      let u=best;while(u>=0&&dist[u]>0){carve(((u%c)+.5)*C,(((u/c)|0)+.5)*C,1.4);u=par[u]}
+      let u=best;while(u>=0&&dist[u]>0){carve(((u%c)+.5)*C,(((u/c)|0)+.5)*C,2.2);u=par[u]}
     }
   };
   cleanWalls();joinAll();
@@ -386,9 +386,12 @@ function gen(i){
   COLS=c;ROWS=r;WW=c*C;WH=r*C;GR=new Uint8Array(c*r);DIST=new Int16Array(c*r).fill(-1);OPEN=[];lastC=-1;MMC=null;
   for(let y=0;y<r;y++)for(let x=0;x<c;x++){const open=g[y][x]===0&&seen[y][x];GR[y*c+x]=open?0:1;
     const X=(x+.5)*C,Y=(y+.5)*C;if(open&&pts.every(p=>Math.hypot(p[0]-X,p[1]-Y)>200))OPEN.push([X,Y])}
+  buildWalls();
   HZ=[];for(let k=0;k<Math.round((4+m.z)*1.6);k++){const o=OPEN[Math.floor(rnd()*OPEN.length)];HZ.push({x:o[0],y:o[1],r:48+Math.floor(rnd()*40)})}
 }
+const fw=(x,y)=>{const i=Math.floor(x/FC),j=Math.floor(y/FC);return i<0||j<0||i>=FW||j>=FH||FM[j*FW+i]===1};
 function hit(x,y,r){
+  if(FM){if(fw(x,y))return true;const n=r>14?12:6,st=6.2832/n;for(let k=0;k<n;k++){const an=k*st;if(fw(x+Math.cos(an)*r,y+Math.sin(an)*r))return true}return false}
   const x0=Math.floor((x-r)/C),x1=Math.floor((x+r)/C),y0=Math.floor((y-r)/C),y1=Math.floor((y+r)/C);
   for(let cy=y0;cy<=y1;cy++)for(let cx=x0;cx<=x1;cx++)if(cx<0||cy<0||cx>=COLS||cy>=ROWS||GR[cy*COLS+cx]){
     const nx=cl(x,cx*C,cx*C+C),ny=cl(y,cy*C,cy*C+C);if((nx-x)**2+(ny-y)**2<r*r)return true}
@@ -434,9 +437,10 @@ function astar(sx,sy,gx,gy){
 }
 function chase(m,dx,dy,d,dt){
   const r=CR(m.r),px=pr.x,py=pr.y;
+  if(m.nd>0){m.nd-=dt;const cx=(Math.floor(m.x/C)+.5)*C,cy=(Math.floor(m.y/C)+.5)*C,l=Math.hypot(cx-m.x,cy-m.y);if(l>6)return[(cx-m.x)/l,(cy-m.y)/l]}
   if(d<420&&los(m.x,m.y,px,py,r)){m.path=null;m.rp=0;return[dx/d,dy/d]}
   // stuck detection: no progress for 0.6s while chasing -> replan
-  m.stk=(m.stk||0)+dt;if(m.stk>.6){if(m.lx!==undefined&&Math.hypot(m.x-m.lx,m.y-m.ly)<5&&!(m.stun>0)&&!(m.frz>0)){m.path=null;m.rp=0}m.lx=m.x;m.ly=m.y;m.stk=0}
+  m.stk=(m.stk||0)+dt;if(m.stk>.6){if(m.lx!==undefined&&Math.hypot(m.x-m.lx,m.y-m.ly)<5&&!(m.stun>0)&&!(m.frz>0)){m.path=null;m.rp=0;m.nd=.5}m.lx=m.x;m.ly=m.y;m.stk=0}
   m.rp=(m.rp||0)-dt;
   const gx=cl(Math.floor(px/C),0,COLS-1),gy=cl(Math.floor(py/C),0,ROWS-1);
   if(m.path&&m.pg&&(Math.abs(m.pg[0]-gx)>2||Math.abs(m.pg[1]-gy)>2))m.rp=Math.min(m.rp,0);
@@ -741,7 +745,7 @@ function qAt(x,y,mp){
 function spawnMob(px,py,ts){
   const mp=MAPS[mi],bos=MT.find(z=>z.boss);const sy=mp.ms[ri(0,mp.ms.length-1)];let t=ts||MT.find(z=>z.s===sy);
   if(t.boss&&(M.some(z=>z.boss)||Math.random()<.6))t=MT.find(z=>z.s===mp.ms[0]);
-  let x,y,k=0;if(px!==undefined){x=px;y=py}else do{const o=OPEN[ri(0,OPEN.length-1)];x=o[0]+ri(-12,12);y=o[1]+ri(-12,12);k++}while(k<20&&Math.hypot(x-pr.x,y-pr.y)<420);
+  let x,y,k=0;if(px!==undefined){x=px;y=py}else do{const o=OPEN[ri(0,OPEN.length-1)];x=o[0]+ri(-12,12);y=o[1]+ri(-12,12);k++}while(k<30&&(Math.hypot(x-pr.x,y-pr.y)<420||hit(x,y,16)));
   let q=qAt(x,y,mp);if(t.boss)q=Math.max(0,q-2);
   let af=0;if(q>=2&&Math.random()<.5)af=ri(1,3);
   const h=t.hp*1.5*(1+(level-1)*.15)*[1,2,4,8,16,32,60,110,200,400][q]*(af===2?1.7:1);
@@ -909,22 +913,42 @@ function drawMenu(){
     tex({x:b.x,y:b.y+Math.sin(now/600+b.ph)*6,r:b.r,s:b.s,c:b.c})}
 }
 const P2=typeof Path2D!=='undefined'?Path2D:class{moveTo(){}lineTo(){}};
-function wallPath(cx,cy){
-  const key=cy*1000+cx,h=WP.get(key);if(h)return h;
-  const S=10,x0=cx*S,y0=cy*S,x1=Math.min(COLS,x0+S),y1=Math.min(ROWS,y0+S),op=(x,y)=>x>=0&&y>=0&&x<COLS&&y<ROWS&&!GR[y*COLS+x],segs=[];
-  for(let y=y0;y<y1;y++)for(let x=x0;x<x1;x++)if(GR[y*COLS+x]){
-    if(op(x+1,y))segs.push([x+1,y,x+1,y+1]);if(op(x-1,y))segs.push([x,y,x,y+1]);if(op(x,y+1))segs.push([x,y+1,x+1,y+1]);if(op(x,y-1))segs.push([x,y,x+1,y])}
-  const ends=new Map();segs.forEach((sg,i)=>{for(const k of[sg[0]+','+sg[1],sg[2]+','+sg[3]]){let a=ends.get(k);if(!a){a=[];ends.set(k,a)}a.push(i)}});
-  const used=new Uint8Array(segs.length),P=new P2();
-  for(let i=0;i<segs.length;i++){if(used[i])continue;used[i]=1;const pts=[[segs[i][0],segs[i][1]],[segs[i][2],segs[i][3]]];
-    for(let d=0;d<2;d++){for(;;){const e=pts[pts.length-1],a=ends.get(e[0]+','+e[1]);let nx=-1;if(a)for(const j of a)if(!used[j]){nx=j;break}if(nx<0)break;used[nx]=1;const sg=segs[nx];pts.push((sg[0]===e[0]&&sg[1]===e[1])?[sg[2],sg[3]]:[sg[0],sg[1]])}pts.reverse()}
-    P.moveTo(pts[0][0]*C,pts[0][1]*C);for(let k=1;k<pts.length;k++)P.lineTo(pts[k][0]*C,pts[k][1]*C)}
-  WP.set(key,P);return P}
+let WFILL=null,FM=null,FW=0,FH=0;const FC=12;const EMPTYP=new P2();
+function wallPath(cx,cy){return WP.get(cy*1000+cx)||EMPTYP}
+function buildWalls(){
+  const W1=COLS+1,isW=(x,y)=>x<0||y<0||x>=COLS||y>=ROWS?true:GR[y*COLS+x]===1,eu=[],ev=[],out=new Map();
+  const add=(x1,y1,x2,y2)=>{const u=y1*W1+x1;eu.push(u);ev.push(y2*W1+x2);let a=out.get(u);if(!a){a=[];out.set(u,a)}a.push(eu.length-1)};
+  for(let y=0;y<ROWS;y++)for(let x=0;x<COLS;x++)if(GR[y*COLS+x]){
+    if(!isW(x,y-1))add(x+1,y,x,y);if(!isW(x+1,y))add(x+1,y+1,x+1,y);if(!isW(x,y+1))add(x,y+1,x+1,y+1);if(!isW(x-1,y))add(x,y,x,y+1)}
+  const used=new Uint8Array(eu.length),loops=[];
+  for(let i=0;i<eu.length;i++){if(used[i])continue;const pts=[];let e=i;
+    for(;;){used[e]=1;const u=eu[e];pts.push([(u%W1)*C,((u/W1)|0)*C]);const nx=out.get(ev[e]);let nn=-1;if(nx)for(const j of nx)if(!used[j]){nn=j;break}if(nn<0)break;e=nn}
+    if(pts.length>2)loops.push(pts)}
+  const smooth=P=>{const Q=[];for(let k=0;k<P.length;k++){const a=P[k],b=P[(k+1)%P.length],L=Math.hypot(b[0]-a[0],b[1]-a[1]),n=Math.max(1,Math.round(L/16));for(let t=0;t<n;t++)Q.push([a[0]+(b[0]-a[0])*t/n,a[1]+(b[1]-a[1])*t/n])}
+    let A=Q;for(let it=0;it<6;it++){const B=new Array(A.length),m=A.length;for(let k=0;k<m;k++){const p=A[(k-1+m)%m],c=A[k],q=A[(k+1)%m];B[k]=[p[0]*.25+c[0]*.5+q[0]*.25,p[1]*.25+c[1]*.5+q[1]*.25]}A=B}return A};
+  WFILL=new P2();WFILL.rect&&WFILL.rect(0,0,WW,WH);WP=new Map();const S=10*C;
+  const SL=[];for(const L0 of loops){const P=smooth(L0);SL.push(P);
+    WFILL.moveTo(P[0][0],P[0][1]);for(let k=1;k<P.length;k++)WFILL.lineTo(P[k][0],P[k][1]);WFILL.closePath&&WFILL.closePath();
+    let cur=null,path=null;
+    for(let k=0;k<P.length;k++){const a=P[k],b=P[(k+1)%P.length],key=Math.floor(((a[1]+b[1])/2)/S)*1000+Math.floor(((a[0]+b[0])/2)/S);
+      if(key!==cur){cur=key;path=WP.get(key);if(!path){path=new P2();WP.set(key,path)}path.moveTo(a[0],a[1])}
+      path.lineTo(b[0],b[1])}}
+  FW=Math.ceil(WW/FC);FH=Math.ceil(WH/FC);FM=new Uint8Array(FW*FH);
+  const rows=Array.from({length:FH},()=>[]);
+  for(const P of SL){const n=P.length;for(let k=0;k<n;k++){const a=P[k],b=P[(k+1)%n];if(a[1]===b[1])continue;let x1=a[0],y1=a[1],x2=b[0],y2=b[1];if(y1>y2){let t=x1;x1=x2;x2=t;t=y1;y1=y2;y2=t}
+    const r0=Math.max(0,Math.ceil(y1/FC-.5)),r1=Math.min(FH-1,Math.ceil(y2/FC-.5)-1);
+    for(let j=r0;j<=r1;j++)rows[j].push(x1+(x2-x1)*(((j+.5)*FC)-y1)/(y2-y1))}}
+  for(let j=0;j<FH;j++){const xs=rows[j].sort((a,b)=>a-b);let st=1,prev=0;
+    for(const x of xs){const i=Math.max(0,Math.min(FW,Math.round(x/FC)));if(st)for(let q=prev;q<i;q++)FM[j*FW+q]=1;prev=i;st^=1}
+    if(st)for(let q=prev;q<FW;q++)FM[j*FW+q]=1}
+  return loops.length
+}
+
 function draw(){
   if(st==='start'){drawMenu();return}
   ctx.fillStyle=MAPS[mi].bg;ctx.fillRect(0,0,W,H);ctx.save();ctx.translate(-cam.x,-cam.y);
   {const mp=MAPS[mi],x0=Math.max(0,Math.floor(cam.x/C)),x1=Math.min(COLS-1,Math.floor((cam.x+W)/C)),y0=Math.max(0,Math.floor(cam.y/C)),y1=Math.min(ROWS-1,Math.floor((cam.y+H)/C)),o=(x,y)=>x>=0&&y>=0&&x<COLS&&y<ROWS&&!GR[y*COLS+x];
-  ctx.fillStyle=mp.wl;for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++)if(GR[y*COLS+x])ctx.fillRect(x*C,y*C,C+1,C+1);
+  ctx.fillStyle=mp.wl;if(WFILL)ctx.fill(WFILL,'evenodd');
   ctx.lineCap='round';ctx.lineJoin='round';const ca=Math.floor(x0/10),cb=Math.floor(x1/10),cc=Math.floor(y0/10),cd=Math.floor(y1/10);
   ctx.strokeStyle='rgba(0,0,0,.5)';ctx.lineWidth=9;for(let j=cc;j<=cd;j++)for(let i=ca;i<=cb;i++)ctx.stroke(wallPath(i,j));
   ctx.strokeStyle=mp.ed;ctx.lineWidth=3.5;for(let j=cc;j<=cd;j++)for(let i=ca;i<=cb;i++)ctx.stroke(wallPath(i,j))}
