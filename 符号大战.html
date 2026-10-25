@@ -173,11 +173,33 @@ body.home .tl,body.home .bl,body.home .eq{display:none}
 .ov.dead .go{font-size:26px;padding:10px 48px;background:#2fc653;color:#fff;border:4px solid #1b6e30;border-radius:14px;box-shadow:0 6px 0 #1b6e30;text-shadow:-1.5px -1.5px 0 #000,1.5px -1.5px 0 #000,-1.5px 1.5px 0 #000,1.5px 1.5px 0 #000}
 .ov.dead .go:active{transform:translateY(5px);box-shadow:0 1px 0 #1b6e30}
 #pzv{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0;box-shadow:inset 0 0 70px 26px rgba(170,60,230,.8),inset 0 0 200px 70px rgba(110,20,170,.5);transition:opacity .12s}
+
+/* ===== florr 风格左侧栏 ===== */
+.tl{gap:7px}
+#lv.chip{background:none;border:0;padding:0;font-size:20px;font-weight:700;letter-spacing:.5px}
+#plc.chip{background:none;border:0;padding:0}
+.xpw{position:relative;width:230px;height:26px;background:#2f323a;border:4px solid #1c1c1c;border-radius:14px;overflow:hidden;box-shadow:0 3px 0 rgba(0,0,0,.35)}
+.xpw i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(#ffe978,#efb91a);transition:width .2s}
+.xpw b{position:relative;display:block;text-align:center;font-size:15px;line-height:18px}
+#hp.hpbar{width:230px;height:28px;background:#2f323a;border:4px solid #1c1c1c;border-radius:15px;box-shadow:0 3px 0 rgba(0,0,0,.35)}
+.hpbar .f{background:linear-gradient(#a8f78d,#4fcf46)}
+.hpbar b{line-height:20px;font-size:15px}
+.hpbar.pz .f{background:linear-gradient(#d4ee6e,#97c82a)}
+.bl{gap:8px;flex-wrap:wrap;max-height:86vh;align-content:flex-start}
+.rb{position:relative;width:60px;height:60px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--c,#888);border:4px solid #1c1c1c;border-radius:14px;box-shadow:inset 0 -6px 0 rgba(0,0,0,.22),0 4px 0 rgba(0,0,0,.4);color:#fff;font-weight:700;cursor:pointer;transition:transform .08s}
+.rb i{font-style:normal;font-size:24px;line-height:1.05;text-shadow:none}
+.rb span{font-size:12px;line-height:1.1}
+.rb::after{content:'';position:absolute;inset:0;border-radius:10px;background:linear-gradient(rgba(255,255,255,.28),rgba(255,255,255,0) 52%);pointer-events:none}
+.rb[data-k]::before{content:attr(data-k);position:absolute;left:4px;top:0;font-size:11px;opacity:.95}
+.rb:hover{transform:translateX(4px)}
+.rb:active{background:var(--c,#888);color:#fff;text-shadow:inherit;transform:translateY(3px);box-shadow:inset 0 -6px 0 rgba(0,0,0,.22),0 1px 0 rgba(0,0,0,.4)}
+.rb.dot i::after{content:'';position:absolute;right:3px;top:3px;width:13px;height:13px;border-radius:50%;background:#ff3b30;border:3px solid #1c1c1c}
+@media (max-height:700px){.rb{width:50px;height:50px;border-radius:12px}.rb i{font-size:20px}.rb span{font-size:11px}.xpw{width:200px}#hp.hpbar{width:200px}}
 </style></head>
 <body>
 <div id="pzv"></div><canvas id="c"></canvas>
 <div class="tl"><div class="chip" id="lv"></div><div class="chip" id="plc"></div><div class="hpbar" id="hp"></div><span id="sc" hidden></span></div>
-<div class="bl"><button class="rb" id="bk" type="button">背包</button><button class="rb" id="cf" type="button">合成</button><button class="rb" id="ab" type="button">成就</button><button class="rb" id="tl" type="button">天赋</button><button class="rb" id="sb" type="button">皮肤</button><button class="rb" id="dx" type="button">图鉴</button><button class="rb" id="mp" type="button">地图</button></div>
+<div class="bl"><button class="rb" id="bk" type="button" style="--c:#f5a623" data-k="B"><i>🎒</i><span>背包</span></button><button class="rb" id="cf" type="button" style="--c:#2fb8d6"><i>🧪</i><span>合成</span></button><button class="rb" id="ab" type="button" style="--c:#f0c419"><i>🏆</i><span>成就</span></button><button class="rb" id="tl" type="button" style="--c:#5b8def"><i>🌟</i><span>天赋</span></button><button class="rb" id="sb" type="button" style="--c:#b765e0"><i>🎨</i><span>皮肤</span></button><button class="rb" id="dx" type="button" style="--c:#ef5b5b"><i>📖</i><span>图鉴</span></button><button class="rb" id="mp" type="button" style="--c:#4cc45a" data-k="M"><i>🗺️</i><span>地图</span></button></div>
 <div class="eq" id="eq"></div>
 <div id="toast" role="status"></div>
 <div id="tip" hidden></div>
@@ -553,7 +575,7 @@ function nt(){const a=tq.shift();if(!a){tb=0;return}tb=1;const t=$('toast');t.te
 function achHtml(){return AC.map(a=>{const u=G.un[a.id],p=!u&&a.p?a.p():null;return `<div class="ar${u?'':' lk'}"><span>${u?'🏆':'🔒'}</span><b>${a.n}</b><span class="hint">${a.d}${p?'（'+Math.min(p[0],p[1])+'/'+p[1]+'）':''} · +${PTS[a.id]||1} 点</span></div>`}).join('')}
 try{best=+localStorage.getItem('symwar-best')||0}catch(e){}
 
-function hud(){$('hp').classList.toggle('pz',pz>0);{const L=plv(),a=150*(L-1)*(L-1),b=150*L*L,f=L>=60?1:Math.max(0,Math.min(1,(score-a)/(b-a)));$('plc').innerHTML='Lv.'+L+'<span class="xpb"><i style="width:'+Math.round(f*100)+'%"></i></span>'}
+function hud(){$('hp').classList.toggle('pz',pz>0);{const L=plv(),a=150*(L-1)*(L-1),b=150*L*L,f=L>=60?1:Math.max(0,Math.min(1,(score-a)/(b-a)));$('plc').innerHTML='<div class="xpw"><i style="width:'+Math.round(f*100)+'%"></i><b>Lv.'+L+'</b></div>'}
   $('hp').innerHTML='<span class="f" style="width:'+Math.max(0,Math.min(100,hp/MH()*100))+'%"></span><b>'+Math.ceil(Math.max(0,hp))+' / '+MH()+'</b>';$('lv').textContent=NAME+' · '+MAPS[mi].n;$('sc').textContent=score}
 function msg(s){$('msg').textContent=s}
 function add(s,r,n=1){G.mr=Math.max(G.mr,r);const k=s+'|'+r;INV[k]=(INV[k]||0)+n}
@@ -579,7 +601,7 @@ function ui0(){
   $('eq').innerHTML=row(EQ,'e')+row(BK,'b');
   const ks=Object.keys(INV).sort((a,b)=>b.split('|')[1]-a.split('|')[1]);
   $('inv').innerHTML=ks.map(k=>{const[s,r]=k.split('|');return it(s,+r,INV[k],`data-i="${k}"`+(mode&&INV[k]>=5&&+r<9?' data-can="1"':'')+(mode===1&&craftSel===k?' data-sel="1"':''))}).join('')||'<span class="hint">背包是空的，击杀怪物来拾取符号花瓣。</span>';
-  $('cft').hidden=mode!==1;if(mode===1&&!CA)$('cft').innerHTML=cftHtml();$('m0').classList.toggle('on',mode===0);$('m1').classList.toggle('on',mode===1);$('m2').classList.toggle('on',mode===2);$('m3').classList.toggle('on',mode===3);$('m3').textContent='天赋'+(avail()?' ('+avail()+')':'');$('bk').textContent='背包';$('tl').textContent='天赋'+(avail()?' ●':'');$('m4').classList.toggle('on',mode===4);$('m5').classList.toggle('on',mode===5);$('inv').classList.toggle('al',mode>=2);if(mode>=2)$('inv').innerHTML=mode===2?achHtml():mode===3?tlHtml():mode===5?skinHtml():dexHtml();
+  $('cft').hidden=mode!==1;if(mode===1&&!CA)$('cft').innerHTML=cftHtml();$('m0').classList.toggle('on',mode===0);$('m1').classList.toggle('on',mode===1);$('m2').classList.toggle('on',mode===2);$('m3').classList.toggle('on',mode===3);$('m3').textContent='天赋'+(avail()?' ('+avail()+')':'');$('tl').classList.toggle('dot',!!avail());$('m4').classList.toggle('on',mode===4);$('m5').classList.toggle('on',mode===5);$('inv').classList.toggle('al',mode>=2);if(mode>=2)$('inv').innerHTML=mode===2?achHtml():mode===3?tlHtml():mode===5?skinHtml():dexHtml();
   $('mh').textContent=mode===5?'选择皮肤（皮肤随等级解锁，等级由积分决定）':mode===4?'图鉴：把鼠标放在卡片上查看详细资料（击败怪物、获得花瓣即可解锁）':mode===3?'可用天赋点：'+avail()+'（成就与等级都会给点数：等级每升 1 级得 1 点；天赋每升一级所需点数递增）':mode===2?'已解锁 '+AC.filter(a=>G.un[a.id]).length+' / '+AC.length:mode?'点击要合成的卡片，放进上方圆圈（需要 5 个相同稀有度），再按「合成」。稀有度越高成功率越低':'点击背包里的卡片来装备；打开背包时点击栏位可取下；游戏中依次点击两个栏位可互换';
 }
 function ui(){ui0();if(st==='play')sv()}
